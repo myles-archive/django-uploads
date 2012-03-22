@@ -26,8 +26,8 @@ class Folder(models.Model):
 	
 	class Meta:
 		verbose_name = _('folder')
-		verbose_name_pluarl= _('folders')
-		db_tables = 'uploads_folders'
+		verbose_name_plural = _('folders')
+		db_table = 'uploads_folders'
 		ordering = ('title',)
 	
 	@property
@@ -59,14 +59,14 @@ class FileUpload(models.Model):
 	
 	folder = models.ForeignKey(Folder, blank=True, null=True)
 	
-	upload = FileField(upload_to="uploads/files/%Y-%m-%d")
+	upload = models.FileField(upload_to="uploads/files/%Y-%m-%d")
 	
 	date_added = models.DateTimeField(_('date added'), auto_now_add=True)
 	date_modified = models.DateTimeField(_('date modified'), auto_now=True)
 	
 	class Meta:
 		verbose_name = _('file upload')
-		verbose_name_pluarl = _('file uploads')
+		verbose_name_plural = _('file uploads')
 		db_table = 'uploads_file_uploads'
 		ordering = ('title',)
 	
